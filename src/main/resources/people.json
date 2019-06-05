@@ -1,0 +1,18 @@
+[
+  {
+    "firstname": "Jon",
+    "lastname": "Snow"
+  },
+  {
+    "firstname": "Arya",
+    "lastname": "Stark"
+  },
+  {
+    "firstname": "Sansa",
+    "lastname": "Stark"
+  },
+  {
+    "firstname": "Tyrion",
+    "lastname": "Lannister"
+  }
+]
