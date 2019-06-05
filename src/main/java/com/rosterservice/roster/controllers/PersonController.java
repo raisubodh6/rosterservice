@@ -30,7 +30,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/v1/people/{name}", method = RequestMethod.GET)
-    public ResponseEntity<?> getPeople(@PathVariable String name) {
+    public ResponseEntity<?> searchPeopleByName(@PathVariable String name) {
         try {
 
             List<Person> people = personService.searchPeopleByFirstOrLastName(name);

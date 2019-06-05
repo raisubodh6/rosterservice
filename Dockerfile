@@ -1,7 +1,10 @@
 FROM java:8
 MAINTAINER raisubodh6@gmail.com
 
-# Expose the container's network port: 9210
+COPY ./target/roster-0.0.1-SNAPSHOT.jar /usr/app/
+
+WORKDIR /usr/app
 EXPOSE 9090
-ADD /target/roster.jar roster.jar
-ENTRYPOINT ["java", "-jar", "roster.jar"]
+RUN sh -c 'touch roster-0.0.1-SNAPSHOT.jar'
+
+ENTRYPOINT ["java","-jar","roster-0.0.1-SNAPSHOT.jar"]

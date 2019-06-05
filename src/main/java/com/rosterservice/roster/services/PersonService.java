@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rosterservice.roster.models.Person;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -51,10 +49,6 @@ public class PersonService {
                 people.stream()
                         .filter(person -> person.getLastname().equals(name) || person.getFirstname().equals(name))
                         .collect(Collectors.toList());
-
-        if (StringUtils.isEmpty(filteredPeople)) {
-            throw new FileNotFoundException("Not Found");
-        }
 
         return filteredPeople;
     }
