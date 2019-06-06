@@ -5,10 +5,7 @@ import com.rosterservice.roster.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,11 +26,11 @@ public class PersonController {
         }
     }
 
-    @RequestMapping(value = "/v1/people/{name}", method = RequestMethod.GET)
-    public ResponseEntity<?> searchPeopleByName(@PathVariable String name) {
+    @RequestMapping(value = "/v1/people", method = RequestMethod.POST)
+    public ResponseEntity<?> searchPeopleByName(@RequestBody Person person) {
         try {
 
-            List<Person> people = personService.searchPeopleByFirstOrLastName(name);
+            List<Person> people = personService.searchPeopleByFirstOrLastName(person);
             return new ResponseEntity<>(people, HttpStatus.OK);
 
         } catch (Exception ex) {

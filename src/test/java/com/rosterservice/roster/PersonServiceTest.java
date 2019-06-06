@@ -26,10 +26,10 @@ public class PersonServiceTest {
 
     @Test
     public void testSearchPeopleReturnsPersonByName() throws IOException {
-        final String name = "Arya";
-        List<Person> people = personService.searchPeopleByFirstOrLastName(name);
+        Person person = new Person("1", "Arya", "");
+        List<Person> people = personService.searchPeopleByFirstOrLastName(person);
 
         assertThat(people.size()).isEqualTo(1);
-        assertThat(people.get(0).getFirstname()).isEqualTo(name);
+        assertThat(people.get(0).getFirstname()).isEqualTo(person.getFirstname());
     }
 }

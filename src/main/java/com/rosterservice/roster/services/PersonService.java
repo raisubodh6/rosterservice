@@ -32,12 +32,12 @@ public class PersonService {
 
     /**
      *
-     * @param name
+     * @param person
      * @return
      * @throws IOException
      */
-    public List<Person> searchPeopleByFirstOrLastName(String name) throws IOException {
-        if (null == name) {
+    public List<Person> searchPeopleByFirstOrLastName(Person person) throws IOException {
+        if (null == person) {
             throw new IllegalArgumentException("Please provide first or last name");
         }
 
@@ -47,7 +47,8 @@ public class PersonService {
 
         List<Person> filteredPeople =
                 people.stream()
-                        .filter(person -> person.getLastname().equals(name) || person.getFirstname().equals(name))
+                        .filter(p -> p.getLastname().equalsIgnoreCase(person.getLastname())
+                                || p.getFirstname().equalsIgnoreCase(person.getFirstname()))
                         .collect(Collectors.toList());
 
         return filteredPeople;

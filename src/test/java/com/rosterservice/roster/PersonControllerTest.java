@@ -46,9 +46,9 @@ public class PersonControllerTest {
         Person person1 = new Person("1", "Arya", "Stark");
         people.add(person1);
 
-        Mockito.when(personService.searchPeopleByFirstOrLastName("")).thenReturn(people);
+        Mockito.when(personService.searchPeopleByFirstOrLastName(person1)).thenReturn(people);
 
-        ResponseEntity<?> response = personController.searchPeopleByName("");
+        ResponseEntity<?> response = personController.searchPeopleByName(person1);
         assertThat(((List<Person>) response.getBody()).size()).isEqualTo(1);
 
     }
